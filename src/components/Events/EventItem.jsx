@@ -1,12 +1,17 @@
-import classes from './EventItem.module.css';
+import { useCartContext } from "../../contexts/cart-context";
+import classes from "./EventItem.module.css";
 
-function EventItem({ event, isInCart, onAddToCart, onRemoveFromCart }) {
-  let buttonCaption = 'Add to Cart';
-  let buttonAction = onAddToCart;
+function EventItem({ event }) {
+  const { cartItems, addItemHandler, removeItemHandler } = useCartContext();
+
+  const isInCart = cartItems.some((item) => item.id === event.id);
+
+  let buttonCaption = "Add to Cart";
+  let buttonAction = () => addItemHandler(event);
 
   if (isInCart) {
-    buttonCaption = 'Remove from Cart';
-    buttonAction = onRemoveFromCart;
+    buttonCaption = "Remove from Cart";
+    buttonAction = () => removeItemHandler(event.id);
   }
 
   return (

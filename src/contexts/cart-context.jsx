@@ -9,7 +9,7 @@ const CartContext = createContext({
 
 // function to consume the cart context object
 export const useCartContext = () => {
-  return useContext(CartContextProvider);
+  return useContext(CartContext);
 };
 
 // cart context provider

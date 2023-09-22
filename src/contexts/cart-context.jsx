@@ -1,7 +1,11 @@
 import { createContext, useContext, useState } from "react";
 
 //create cart context
-const CartContext = createContext({});
+const CartContext = createContext({
+  cartItems: [],
+  addItemHandler: () => {},
+  removeItemHandler: () => {},
+});
 
 // function to consume the cart context object
 export const useCartContext = () => {
